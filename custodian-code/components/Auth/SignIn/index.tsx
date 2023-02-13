@@ -19,15 +19,16 @@ const SignIn: React.FC = () => {
                     </a>
                 </>
             )}
-            {session?.user && <><a
-                href={`/api/auth/signout`}
-                onClick={(e) => {
-                    e.preventDefault()
-                    signOut()
-                }}
-            >
-                Sign out
-            </a></>}
+            {session?.user && <>
+                <a
+                    href={`/api/auth/signout`}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        signOut()
+                    }}
+                >
+                    Sign out
+                </a></>}
         </>
     )
 }

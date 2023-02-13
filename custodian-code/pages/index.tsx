@@ -1,5 +1,5 @@
 
-import SignIn from "../components/Auth/SignIn"
+import ListedNFts from "@/components/ListedNFts"
 
 export default function Home() {
 
@@ -7,9 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <SignIn />
-      
-
+    <ListedNFts />
     </>
   )
 }
