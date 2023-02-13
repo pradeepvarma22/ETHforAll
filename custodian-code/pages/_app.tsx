@@ -12,12 +12,14 @@ export default function App({
 }: AppProps<{ session: Session }>) {
   return (
     <>
+
       <Provider store={store}>
         <SessionProvider session={session}>
           <Navbar />
           <Component {...pageProps} />
         </SessionProvider>
       </Provider>
+
     </>
   )
 }

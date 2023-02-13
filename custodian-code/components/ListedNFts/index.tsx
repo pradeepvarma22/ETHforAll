@@ -16,7 +16,7 @@ const ListedNFts: React.FC = () => {
         const items: INFTItemEx[] = await getAllNfts()
         store.dispatch(setAllNfts(items))
     }
-    
+
 
     useEffect(() => {
         onPageLoad()
@@ -24,8 +24,7 @@ const ListedNFts: React.FC = () => {
 
     return (
         <>
-
-            <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
+            <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center ">
                 {allNfts.map((nft: INFTItemEx, index) => <ListedNFt key={index} nft={nft} />)}
             </div>
 
