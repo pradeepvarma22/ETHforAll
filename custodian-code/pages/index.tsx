@@ -1,5 +1,5 @@
 
-import TypewriterComponent from "@/components/Home/TypeWriter"
+import HomeComponent from "@/components/Home"
 import ListedNFts from "@/components/ListedNFts"
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
     <>
 
       <div className="px-20 ">
-        <TypewriterComponent />
+        <HomeComponent />
       </div>
 
 
