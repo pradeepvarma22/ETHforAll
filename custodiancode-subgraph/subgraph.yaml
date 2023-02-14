@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: CustodianCode
+    network: mumbai
+    source:
+      address: "0x191274304aA83f1A43D3d4D0168C09e95CEbC551"
+      abi: CustodianCode
+      startBlock: 32006279
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - TokenListedSuccess
+        - Transfer
+      abis:
+        - name: CustodianCode
+          file: ./abis/CustodianCode.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: TokenListedSuccess(indexed uint256,address,address,uint256,bool,bool,string)
+          handler: handleTokenListedSuccess
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/custodian-code.ts
