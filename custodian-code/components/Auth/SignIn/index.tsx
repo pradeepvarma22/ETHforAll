@@ -15,6 +15,7 @@ const SignIn: React.FC = () => {
                             signIn()
                         }}
                     >
+                        <img src="/wallet.png" style={{ height: 30 }} />
                         Sign in
                     </a>
                 </>
@@ -27,6 +28,7 @@ const SignIn: React.FC = () => {
                         signOut()
                     }}
                 >
+                     <img src="/signout.png" style={{ height: 30 }} />
                     Sign out
                 </a></>}
         </>

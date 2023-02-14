@@ -10,9 +10,8 @@ export default function HeroSection() {
                     <div className={styles.sub1_head}>
                         Discover Digital Art & Collect NFTs
                     </div>
-                    <div className={styles.sub1_subhead}>
+                    <div className="text-3xl font-bold text-red-400">
                         <TypewriterComponent />
-
                     </div>
                     <div className={styles.button}>
                         <button className={styles.buttoninner}>

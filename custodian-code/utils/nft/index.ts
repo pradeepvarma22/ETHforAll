@@ -23,3 +23,30 @@ export async function getAllNfts() {
     return items;
 }
 
+
+export async function getNftByTokenId(tokenId: number) {
+
+    const URI: string = process.env.NEXT_PUBLIC_MUMBAI_URI_QUICKNODE!
+    const jsonRPCProvider = new ethers.JsonRpcProvider(URI);
+    const nftContract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, jsonRPCProvider)
+    const nftItem = await nftContract.getNFTItemForId(tokenId)
+    console.log(nftItem)
+
+    const item = await Promise.all(nftItem)
+    const owner = item[1]
+    const seller = item[2]
+    let price = Number(ethers.formatUnits(item[3].toString(), 'wei'))
+    const currentlyListed = item[4]
+    const isFiat = item[5]
+    const socialId = item[6]
+    const hasTxnDone = item[7]
+    const txnId: string = item[8]
+    const tokenURI = await nftContract.tokenURI(tokenId);
+    const { data: { image, name, description } } = await axios.get(tokenURI);
+
+
+    const finalItem: INFTItemEx = { tokenId, currentlyListed, isFiat, socialId, hasTxnDone, txnId, price, seller, owner, image, name, description }
+
+
+    return finalItem;
+}
