@@ -11,7 +11,7 @@ const TypewriterComponent: React.FC = () => {
                 }}
                 onInit={(typewriter) => {
                     typewriter
-                        .typeString(`<span className="">Buy using Crypto and Fiat</span>`)
+                        .typeString(`<span className="">Buy and Sell using Crypto and Fiat</span>`)
                         .pauseFor(2000)
                         .deleteAll()
                         .typeString('<span className="">Collectible Items.</span>')

@@ -17,7 +17,6 @@ const ListedNFts: React.FC = () => {
         store.dispatch(setAllNfts(items))
     }
 
-
     useEffect(() => {
         onPageLoad()
     }, [])
@@ -33,4 +32,3 @@ const ListedNFts: React.FC = () => {
 }
 
 export default ListedNFts
-

@@ -1,0 +1,102 @@
+.main {
+    padding: 5rem 7.188rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .sub1 {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 39.84%;
+
+        &_head {
+            font-family: "Work Sans";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 67px;
+            line-height: 110%;
+        }
+
+        &_subhead {
+            font-family: "Work Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 160%;
+        }
+
+        .button {
+            .buttoninner {
+                background-color: #a259ff;
+                padding: 20px 50px;
+                color: white;
+                display: flex;
+                align-items: center;
+                border-radius: 20px;
+
+                font-family: "Work Sans";
+                font-style: bold;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 140%;
+
+                gap: 12px;
+            }
+        }
+
+        .sub1_trends {
+            display: flex;
+            justify-content: space-between;
+            font-family: "Space Mono";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 140%;
+        }
+
+        .sub1_trends2 {
+            // width: 95%;1
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 23.99px;
+            line-height: 160%;
+        }
+    }
+
+    .sub2 {
+        &_image {
+            display: flex;
+        }
+
+        &_text {
+            background-color: #3b3b3b;
+            border-radius: 0px 0px 20px 20px;
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            &head {
+                font-family: "Work Sans";
+                font-style: normal;
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 140%;
+            }
+
+            &creator {
+                display: flex;
+                font-family: "Work Sans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                gap: 12px;
+            }
+        }
+    }
+}
