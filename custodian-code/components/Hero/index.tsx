@@ -32,11 +32,11 @@ export default function HeroSection() {
                     </div>
                 </div>
                 <div className={styles.sub2}>
-                    <div className={styles.sub2_image}>
-                        <img src="/hero_image.svg" alt="" />
+                    <div className="">
+                        <img src="/hero_image.jpg" className="rounded-t-xl" style={{ height: 350 }} alt="" />
                     </div>
                     <div className={styles.sub2_text}>
-                        <div className={styles.sub2_texthead}>Space Walking</div>
+                        <div className={styles.sub2_texthead}>Apequest</div>
                         <div className={styles.sub2_textcreator}>
                             <img src="/hero_creator.svg" alt="" />
                             <div className="">Animakid</div>

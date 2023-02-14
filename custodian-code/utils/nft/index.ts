@@ -30,8 +30,6 @@ export async function getNftByTokenId(tokenId: number) {
     const jsonRPCProvider = new ethers.JsonRpcProvider(URI);
     const nftContract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, jsonRPCProvider)
     const nftItem = await nftContract.getNFTItemForId(tokenId)
-    console.log(nftItem)
-
     const item = await Promise.all(nftItem)
     const owner = item[1]
     const seller = item[2]
@@ -43,7 +41,6 @@ export async function getNftByTokenId(tokenId: number) {
     const txnId: string = item[8]
     const tokenURI = await nftContract.tokenURI(tokenId);
     const { data: { image, name, description } } = await axios.get(tokenURI);
-
 
     const finalItem: INFTItemEx = { tokenId, currentlyListed, isFiat, socialId, hasTxnDone, txnId, price, seller, owner, image, name, description }
 
