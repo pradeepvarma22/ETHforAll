@@ -23,7 +23,9 @@ const Navbar: React.FC = () => {
                     </div>
                     <ul className="flex items-center space-x-16">
                         <li className="font-semibold text-gray-700">Home</li>
-                        <li className="font-semibold text-gray-700">Articles</li>
+                        <Link href="/sell">
+                            <li className="font-semibold text-gray-700">Sell</li>
+                        </Link>
                         {status === "authenticated" &&
                             <li>
                                 Profile

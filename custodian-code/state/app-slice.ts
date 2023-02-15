@@ -3,7 +3,7 @@ import { IStore } from "@/types";
 
 
 const initialState: IStore = {
-    allNfts: []
+    allNfts: [],
 }
 
 const Slice = createSlice({
@@ -18,7 +18,7 @@ const Slice = createSlice({
                 state.allNfts = []
             }
         },
-
+   
     }
 })
 

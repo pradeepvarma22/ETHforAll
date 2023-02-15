@@ -1,14 +1,18 @@
 import { getNftByTokenId } from '@/utils/nft';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-import { INFTItemEx } from '@/types/index'
+import { INFTItemEx, IStore } from '@/types/index'
 import { useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 
 export default function Nft() {
+
+
 
   const router = useRouter()
 
   const { data, status } = useSession()
+
 
 
   const [nft, setNft] = useState<INFTItemEx>()
@@ -22,6 +26,23 @@ export default function Nft() {
     await getNftById(tokenid)
   }
 
+  function handlePayment() {
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     if (router.isReady && router.query.tokenid) {
       onPageLoad(Number(router.query.tokenid))
@@ -29,6 +50,8 @@ export default function Nft() {
     else {
     }
   }, [router.isReady])
+
+
 
 
   return (
@@ -78,19 +101,26 @@ export default function Nft() {
               </div>
               <p className="leading-relaxed pb-5 text-justify">{nft?.description}</p>
               <div className="flex">
+
+
+                <div className="flex ml-auto text-white focus:outline-none rounded">
+                  {""}
+                </div>
+
                 <span className=" title-font font-medium text-2xl text-white">{nft?.price} {nft?.isFiat === true ? "USD" : "BIT"}</span>
-
-
-
                 <button className="rounded-full  w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                   </svg>
                 </button>
+              </div>
 
-                {status === "authenticated" && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy</button>}
+              <div className="flex pt-6">
+
+                {status === "authenticated" && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handlePayment}>Buy</button>}
 
               </div>
+
             </div>
           </div>
         </div>
@@ -98,3 +128,4 @@ export default function Nft() {
     </>
   )
 }
+

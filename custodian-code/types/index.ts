@@ -29,6 +29,7 @@ export interface INFTItemEx extends INFTItem {
 
 }
 
-export interface IStore{
-    allNfts: INFTItemEx[]
+
+export interface IStore {
+    allNfts: INFTItemEx[];
 }
