@@ -7,13 +7,11 @@ export default function Sell() {
 
     const [nftName, setNftName] = useState("")
     const [nftDescription, setNftDescription] = useState("")
-    // const [attributes, setAttributes] = useState([]);
     const [fileUrl, setFileUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [files, setFiles] = useState<any[]>([]);
 
 
-    console.log(fileUrl)
 
 
     const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +47,7 @@ export default function Sell() {
     return (
         <>
 
-            Seller
+            
 
             <div>
 
@@ -59,16 +57,17 @@ export default function Sell() {
 
 
                     <div className="grid grid-cols-2 gap-4">
+                    
                         <div className="grid place-items-center">
                             <div className="w-full max-w-sm">
                                 <div className="flex items-center border-b border-teal-500 py-2">
-                                    <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="NFT Name" aria-label="" onChange={e => setNftName(e.target.value)} />
+                                    <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="NFT Name" aria-label="" onChange={e => setNftName(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="w-full max-w-sm">
                                 <div className="flex items-center border-b border-teal-500 py-2">
-                                    <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="NFT Description" aria-label="" onChange={e => setNftDescription(e.target.value)} />
+                                    <input className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="NFT Description" aria-label="" onChange={e => setNftDescription(e.target.value)} />
                                 </div>
                             </div>
                             <div className="h-32 w-64">
