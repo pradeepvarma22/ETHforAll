@@ -1,1 +1,12 @@
-# Custodian Code: A Self-Custody App
+# Custodiancode
+
+
+
+
+
+
+
+```shell
+yarn hardhat run scripts/deploy.ts
+```
+

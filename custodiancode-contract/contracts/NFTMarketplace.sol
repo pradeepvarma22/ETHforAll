@@ -34,21 +34,28 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
 
     mapping(uint256 => NFTItem) private idToNFTItem;
 
-    constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {}
+    constructor(string memory _name, string memory _symbol)
+        ERC721(_name, _symbol)
+    {}
 
     function getLatestIdToNFTItem() public view returns (NFTItem memory) {
         uint256 currentTokenId = _tokenIds.current();
         return idToNFTItem[currentTokenId];
     }
 
-    function getNFTItemForId(uint256 tokenId) public view returns (NFTItem memory) {
+    function getNFTItemForId(uint256 tokenId)
+        public
+        view
+        returns (NFTItem memory)
+    {
         return idToNFTItem[tokenId];
     }
 
-    function createNFTByUser(
-        string memory tokenURI,
-        uint256 price
-    ) public payable returns (uint256) {
+    function createNFTByUser(string memory tokenURI, uint256 price)
+        public
+        payable
+        returns (uint256)
+    {
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
 
@@ -66,9 +73,17 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
             false,
             ""
         );
-        
+
         _transfer(msg.sender, address(this), newTokenId);
-        emit TokenListedSuccess(newTokenId, address(this), msg.sender, price, true, false, "");
+        emit TokenListedSuccess(
+            newTokenId,
+            address(this),
+            msg.sender,
+            price,
+            true,
+            false,
+            ""
+        );
 
         return newTokenId;
     }
@@ -124,7 +139,10 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
         payable(seller).transfer(msg.value);
     }
 
-    function executeSaleByAdmin(uint256 tokenId, string memory _txnId) public onlyOwner {
+    function executeSaleByAdmin(uint256 tokenId, string memory _txnId)
+        public
+        onlyOwner
+    {
         idToNFTItem[tokenId].currentlyListed = true;
         idToNFTItem[tokenId].hasTxnDone = true;
         idToNFTItem[tokenId].txnId = _txnId;
@@ -147,10 +165,11 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
         return tokens;
     }
 
-    function getMyNFTs(
-        bool _isFiat,
-        string memory _socialId
-    ) public view returns (NFTItem[] memory) {
+    function getMyNFTs(bool _isFiat, string memory _socialId)
+        public
+        view
+        returns (NFTItem[] memory)
+    {
         uint256 totalItemCount = _tokenIds.current();
         uint256 itemCount = 0;
         uint256 currentIndex = 0;
@@ -206,7 +225,13 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
         }
     }
 
-    function compare(string memory str1, string memory str2) public pure returns (bool) {
-        return keccak256(abi.encodePacked(str1)) == keccak256(abi.encodePacked(str2));
+    function compare(string memory str1, string memory str2)
+        public
+        pure
+        returns (bool)
+    {
+        return
+            keccak256(abi.encodePacked(str1)) ==
+            keccak256(abi.encodePacked(str2));
     }
 }
