@@ -131,7 +131,8 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
         address seller = idToNFTItem[tokenId].seller;
         require(msg.value >= price, "submit the asking price");
 
-        idToNFTItem[tokenId].currentlyListed = true;
+        idToNFTItem[tokenId].currentlyListed = false;
+		idToNFTItem[tokenId].hasTxnDone = true;
         idToNFTItem[tokenId].seller = payable(msg.sender);
         _itemsSold.increment();
 
@@ -143,7 +144,7 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
         public
         onlyOwner
     {
-        idToNFTItem[tokenId].currentlyListed = true;
+        idToNFTItem[tokenId].currentlyListed = false;
         idToNFTItem[tokenId].hasTxnDone = true;
         idToNFTItem[tokenId].txnId = _txnId;
         _itemsSold.increment();

@@ -1,5 +1,5 @@
 // export const CONTRACT_ADDRESS: string = "0x191274304aA83f1A43D3d4D0168C09e95CEbC551" // MUMBAI
-export const CONTRACT_ADDRESS: string = "0x623B40bC298A94ff6596ADa2B0d9073b09e6eD85" // Mantle
+export const CONTRACT_ADDRESS: string = "0x79587a1E31819c26F2F7d14Af533560f7b00d91e" // Mantle
 
 
 export const CONTRACT_ABI = [

@@ -26,10 +26,9 @@ const ListedNFt: React.FC<IListedNftProp> = ({ nft }) => {
                         src={nft.image}
                         alt={nft.name}
                     />
-                    {nft.currentlyListed === true && <div>Soldout</div>}
+                    {nft.currentlyListed === false && <div className="text-red-300 font-bold text-xl pt-2">Sold</div>}
                     <section className="details-nft">
                         <span className="name">{nft.name}</span>
-
                         <div className="identify-artist">
                             <img
                                 src="https://source.unsplash.com/random/200x200"
@@ -37,14 +36,13 @@ const ListedNFt: React.FC<IListedNftProp> = ({ nft }) => {
                             />
                             <span>{nft.owner.toString().slice(0, 8) + "..." + nft.owner.toString().slice(28, 32)}</span>
                         </div>
-
                         <div className="values">
                             <div className="price">
                                 <span className="title">Price</span>
                                 <span>{nft.price} ETH</span>
                             </div>
                             <div className="highest-bid">
-                                <span className="title">{nft.description}</span>
+                                <span className="title">  </span>
                                 <span>{nft.tokenId} : Id</span>
                             </div>
                         </div>
