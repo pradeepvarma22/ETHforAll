@@ -8,12 +8,10 @@ interface IListedNftProp {
     nft: INFTItemEx,
 }
 
-
 const ListedNFt: React.FC<IListedNftProp> = ({ nft }) => {
 
     const { data, status } = useSession()
     const router = useRouter()
-
 
 
     function handleClick() {
@@ -28,7 +26,7 @@ const ListedNFt: React.FC<IListedNftProp> = ({ nft }) => {
                         src={nft.image}
                         alt={nft.name}
                     />
-
+                    {nft.currentlyListed === true && <div>Soldout</div>}
                     <section className="details-nft">
                         <span className="name">{nft.name}</span>
 

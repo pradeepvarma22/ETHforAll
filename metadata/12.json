@@ -1,0 +1,45 @@
+{
+    "name": "Witches Hat",
+    "description": "Flovatar Components include Sparks and Boosters, used in the Builder to make a new Flovatar, but also Flobit accessories that your Flovatar can equip and the TerraKit pack content as well (Flobot Kit, Asteroid Island and FUB).",
+    "image": "https://res.cloudinary.com/hxn7xk7oa/image/fetch/c_lfill,w_1200,h_1200,q_100,f_auto/https://flovatar.com/api/image/template/761",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Cool",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "2:22",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Strength",
+            "value": 1
+        },
+        {
+            "display_type": "boost_percentage",
+            "trait_type": "2:22",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Humble",
+            "value": "True"
+        },
+        {
+            "trait_type": "Kind",
+            "value": "True"
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "name": "Girl #181",
+    "description": "Buy any of them! I know you can, you have enough money to buy one",
+    "image": "https://i.seadn.io/gae/feaV86J_-D3ridcwQE_3KKh64MEocabWYJ4qpFJPtKLA2QpFSeChmz9HZTeug2-nvNK_X5KJTWDW4pwpZHG9m4Vw0kJ7_myL6zo7?auto=format&w=1000",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Cool",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "2:22",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Strength",
+            "value": 1
+        },
+        {
+            "display_type": "boost_percentage",
+            "trait_type": "2:22",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Humble",
+            "value": "True"
+        },
+        {
+            "trait_type": "Kind",
+            "value": "True"
+        }
+    ]
+}

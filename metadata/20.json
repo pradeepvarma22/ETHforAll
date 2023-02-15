@@ -1,0 +1,45 @@
+{
+    "name": "Gangster Ape Quest #127",
+    "description": "Dedicated to the development of digital art in the web3 NFT world.",
+    "image": "https://i.seadn.io/gae/zHTokGe3UCBay5TK1zH5Qkic5m2bRGtCNiwowf7pFeRYld6Y592XHnL9QdDhYwK99r6lBJSHaIBDLIXKWGiNhdBV3HvFYmLPqRQy?auto=format&w=1000",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Cool",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "2:22",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Strength",
+            "value": 1
+        },
+        {
+            "display_type": "boost_percentage",
+            "trait_type": "2:22",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Humble",
+            "value": "True"
+        },
+        {
+            "trait_type": "Kind",
+            "value": "True"
+        }
+    ]
+}

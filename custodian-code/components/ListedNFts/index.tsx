@@ -26,7 +26,6 @@ const ListedNFts: React.FC = () => {
             <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center ">
                 {allNfts.map((nft: INFTItemEx, index) => <ListedNFt key={index} nft={nft} />)}
             </div>
-
         </>
     )
 }
