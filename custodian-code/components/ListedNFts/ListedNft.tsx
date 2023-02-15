@@ -39,7 +39,7 @@ const ListedNFt: React.FC<IListedNftProp> = ({ nft }) => {
                         <div className="values">
                             <div className="price">
                                 <span className="title">Price</span>
-                                <span>{nft.price} ETH</span>
+                                <span>{nft.price} {nft.isFiat === true ? "USD" : "BIT"}</span>
                             </div>
                             <div className="highest-bid">
                                 <span className="title">  </span>

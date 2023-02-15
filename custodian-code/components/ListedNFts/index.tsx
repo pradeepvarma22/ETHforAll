@@ -14,8 +14,6 @@ const ListedNFts: React.FC = () => {
 
     async function onPageLoad() {
         const items: INFTItemEx[] = await getAllNfts()
-        console.log(items)
-
         store.dispatch(setAllNfts(items))
     }
 
