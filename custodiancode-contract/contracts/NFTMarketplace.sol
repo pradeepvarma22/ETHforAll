@@ -58,7 +58,7 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
     {
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
-
+        
         _safeMint(msg.sender, newTokenId);
         _setTokenURI(newTokenId, tokenURI);
 
