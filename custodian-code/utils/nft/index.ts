@@ -7,7 +7,7 @@ import { ethers } from "ethers"
 
 export async function getAllNfts() {
 
-    const URI: string = process.env.NEXT_PUBLIC_MUMBAI_URI_QUICKNODE!
+    const URI: string = process.env.NEXT_PUBLIC_MANTLE_URI_QUICKNODE!
     const jsonRPCProvider = new ethers.JsonRpcProvider(URI);
     const nftContract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, jsonRPCProvider)
     const allNfts: INFTItem[] = await nftContract.getAllNFTs()
@@ -26,7 +26,7 @@ export async function getAllNfts() {
 
 export async function getNftByTokenId(tokenId: number) {
 
-    const URI: string = process.env.NEXT_PUBLIC_MUMBAI_URI_QUICKNODE!
+    const URI: string = process.env.NEXT_PUBLIC_MANTLE_URI_QUICKNODE!
     const jsonRPCProvider = new ethers.JsonRpcProvider(URI);
     const nftContract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, jsonRPCProvider)
     const nftItem = await nftContract.getNFTItemForId(tokenId)
