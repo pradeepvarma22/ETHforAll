@@ -29,7 +29,12 @@ export interface INFTItemEx extends INFTItem {
 
 }
 
+export enum IPaymentType {
+    'CRYPTO' = 'CRYPTO',
+    'CREDIT_CARD' = 'CREDIT_CARD'
+}
 
 export interface IStore {
     allNfts: INFTItemEx[];
+    payWith: IPaymentType;
 }

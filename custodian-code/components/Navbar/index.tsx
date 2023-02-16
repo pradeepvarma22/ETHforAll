@@ -22,9 +22,9 @@ const Navbar: React.FC = () => {
                         <input className="ml-2 outline-none bg-transparent font-" type="text" name="search" id="search" placeholder="Search..." />
                     </div>
                     <ul className="flex items-center space-x-16">
-                        <li className="font-semibold text-gray-700">Home</li>
+                        <li className="font-semibold text-white">Home</li>
                         <Link href="/sell">
-                            <li className="font-semibold text-gray-700">Sell</li>
+                            <li className="font-semibold text-white">Sell</li>
                         </Link>
                         {status === "authenticated" &&
                             <li>
