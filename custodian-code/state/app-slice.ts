@@ -4,13 +4,30 @@ import { IPaymentType, IStore } from "@/types";
 
 const initialState: IStore = {
     allNfts: [],
-    payWith: IPaymentType.CRYPTO
+    payWith: IPaymentType.CRYPTO,
+    hasConnectedWallet: false,
+    userHasWallet: false,
+    walletAddress: ""
 }
 
 const Slice = createSlice({
     name: 'slice',
     initialState,
     reducers: {
+        setUserHasWallet: (state, action) => {
+            state.userHasWallet = action.payload
+        },
+        setWallet: (state, action) => {
+
+            if (action.payload) {
+                state.walletAddress = action.payload
+                state.hasConnectedWallet = true
+            } else {
+                state.walletAddress = ""
+                state.hasConnectedWallet = false
+            }
+
+        },
         setAllNfts: (state, action) => {
             if (action.payload) {
                 state.allNfts = action.payload
@@ -31,5 +48,5 @@ const Slice = createSlice({
     }
 })
 
-export const { setAllNfts, setPayWith } = Slice.actions
+export const { setAllNfts, setPayWith, setUserHasWallet, setWallet } = Slice.actions
 export default Slice.reducer;

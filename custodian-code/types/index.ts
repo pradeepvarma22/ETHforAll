@@ -7,6 +7,21 @@ export interface IUser {
     email?: string | undefined;
     image: string;
     emailVerified: boolean;
+    wallet_address: string;
+}
+
+export interface IWallet {
+    _id: mongoose.Types.ObjectId;
+    public_key: string;
+    private_key: string;
+    wallet_mnemonic_phrase: string;
+    userObjectId: string;
+}
+
+export interface IWalletState {
+    wallet_address: string;
+    wallet_privateKey: string;
+    wallet_mnemonic_phrase: string;
 }
 
 export interface INFTItem {
@@ -37,4 +52,14 @@ export enum IPaymentType {
 export interface IStore {
     allNfts: INFTItemEx[];
     payWith: IPaymentType;
+    hasConnectedWallet: boolean;
+    walletAddress: string;
+    userHasWallet: boolean;
 }
+
+export enum IClickStatus {
+    'CLICK_FALSE' = 'CLICK_FALSE',
+    'CLICK_TRUE' = 'CLICK_TRUE',
+    'WORK_DONE' = 'WORK_DONE'
+}
+

@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { store } from "@/state/store";
 import ViewNft from "@/components/Seller/ViewNft";
 import NftInput from "@/components/Seller/NftInput";
+import CheckWalletStatus from "@/components/Seller/WalletStatus";
+import AdminTxn from "@/components/Seller/AdminTxn";
 
 
 
@@ -16,61 +18,57 @@ export default function Sell() {
     const [fileUrl, setFileUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [files, setFiles] = useState<any[]>([]);
-
-
     const payWith = useSelector((state: IStore) => state.payWith)
-    console.log(payWith)
+    const userHasWallet = useSelector((state: IStore) => state.userHasWallet)
 
 
-
-
-
-
+    
 
     return (
         <>
             <div>
-                <div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="grid place-items-center">
+                <div className="grid grid-cols-2 gap-40">
+                    <div className="grid place-items-center">
 
-                            <NftInput
-                                nftDescription={nftDescription}
-                                nftName={nftName}
-                                setFileUrl={setFileUrl}
-                                setFiles={setFiles}
-                                setLoading={setLoading}
-                                setNftDescription={setNftDescription}
-                                setNftName={setNftName}
-                                setPrice={setPrice} />
-                        </div>
+                        <NftInput
+                            nftDescription={nftDescription}
+                            nftName={nftName}
+                            setFileUrl={setFileUrl}
+                            setFiles={setFiles}
+                            setLoading={setLoading}
+                            setNftDescription={setNftDescription}
+                            setNftName={setNftName}
+                            setPrice={setPrice} />
+                        <div>
+                            {payWith === IPaymentType.CRYPTO &&
 
-                        <div className="">
+                                <div>
+                                    <CheckWalletStatus />
+                                </div>
+                            }
 
-                            <ViewNft
-                                fileUrl={fileUrl}
-                                files={files}
-                                nftDescription={nftDescription}
-                                nftName={nftName}
-                                price={price} />
+                            {/* {payWith === IPaymentType.CRYPTO && userHasWallet && <ConnectTxn />}*/}
+                            {payWith === IPaymentType.CRYPTO && !userHasWallet && <AdminTxn />}
 
+
+                            {/* {payWith === IPaymentType.CREDIT_CARD  && <AdminTxn />} */}
                         </div>
                     </div>
 
+                    <div className="">
 
+                        <ViewNft
+                            fileUrl={fileUrl}
+                            files={files}
+                            nftDescription={nftDescription}
+                            nftName={nftName}
+                            price={price} />
 
-
-
-
+                    </div>
                 </div>
-
-
-
-
-
-
-
             </div>
+
+
 
 
 

@@ -12,9 +12,11 @@ export const UserSchema = new Schema<IUser>(
         name: { type: String, require: false },
         email: { type: String, required: false },
         emailVerified: { type: Boolean, required: false },
-        image: { type: String, required: false }
+        image: { type: String, required: false },
+        wallet_address: {type: String, required: false}
     }
 );
 
-const User: Model<IUser> = models.User || mongoose.model("User", UserSchema);
+const User: Model<IUser> = mongoose.models.User || mongoose.model("User", UserSchema);
 export default User;
+
