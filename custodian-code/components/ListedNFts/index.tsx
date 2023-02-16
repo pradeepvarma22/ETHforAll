@@ -13,6 +13,7 @@ const ListedNFts: React.FC = () => {
     const allNfts = useSelector((state: IStore) => state.allNfts)
 
     async function onPageLoad() {
+        console.log(2)
         const items: INFTItemEx[] = await getAllNfts()
         store.dispatch(setAllNfts(items))
     }
@@ -49,3 +50,4 @@ const ListedNFts: React.FC = () => {
 }
 
 export default ListedNFts
+

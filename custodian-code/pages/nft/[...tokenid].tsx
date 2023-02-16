@@ -3,18 +3,34 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import { INFTItemEx, IStore } from '@/types/index'
 import { useSession } from 'next-auth/react';
-import { useSelector } from 'react-redux';
+import { ethers } from 'ethers';
+import { CONTRACT_ABI, CONTRACT_ADDRESS } from '@/constants';
+declare var window: any
 
 export default function Nft() {
-
-
-
   const router = useRouter()
-
   const { data, status } = useSession()
   const [nft, setNft] = useState<INFTItemEx>()
+  const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false)
+  const [provider, setProvider] = useState<any>()
+  const [txnDone, setTxnDone] = useState<boolean>(false)
 
 
+  const connectToWallet = async () => {
+
+    if (window.ethereum) {
+      let _provider = null;
+      let signer = null;
+      _provider = new ethers.BrowserProvider(window.ethereum)
+      signer = await _provider.getSigner();
+
+      setProvider(_provider)
+      setIsWalletConnected(true)
+    } else {
+      setIsWalletConnected(false)
+      console.log('Install MetaMask')
+    }
+  };
 
 
 
@@ -29,21 +45,15 @@ export default function Nft() {
     await getNftById(tokenid)
   }
 
-  function handlePayment() {
+  async function handleSell() {
 
+    const signer = await provider.getSigner()
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
+    await (await contract.executeSale(nft?.tokenId, { value: ethers.parseUnits(String(nft?.price), "ether") })).wait()
 
-
-
-
+    setTxnDone(true)
 
   }
-
-
-
-
-
-
-
 
 
   useEffect(() => {
@@ -64,7 +74,15 @@ export default function Nft() {
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img src={nft?.image} alt={nft?.name} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0"   >
-              <h2 className="text-xl title-font text-gray-300 tracking-widest"   >{nft?.name}</h2>
+              <div className="text-xl title-font text-gray-300 tracking-widest"   >{nft?.name}
+                {
+                  nft?.currentlyListed === false && <div className="text-red-500 font-bold">
+                    Sold
+                  </div>
+
+                }
+
+              </div>
               <div className="flex mb-4">
                 <span className="flex items-center">
                   <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -117,12 +135,19 @@ export default function Nft() {
                   </svg>
                 </button>
               </div>
+              {
+                nft?.currentlyListed === true &&
 
-              <div className="flex pt-6">
+                <div className="flex pt-6">
+                  {!isWalletConnected && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={connectToWallet}>Connect to wallet</button>}
 
-                {status === "authenticated" && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handlePayment}>Buy</button>}
+                  {isWalletConnected && txnDone === false && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handleSell}>Sell</button>}
 
-              </div>
+                  {txnDone && <>Txn Done</>}
+                </div>
+              }
+
+
 
             </div>
           </div>
