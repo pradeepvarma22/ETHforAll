@@ -7,6 +7,7 @@ import ViewNft from "@/components/Seller/ViewNft";
 import NftInput from "@/components/Seller/NftInput";
 import CheckWalletStatus from "@/components/Seller/WalletStatus";
 import AdminTxn from "@/components/Seller/AdminTxn";
+import ConnectTxn from "@/components/Seller/ConnectTxn";
 
 
 
@@ -22,7 +23,7 @@ export default function Sell() {
     const userHasWallet = useSelector((state: IStore) => state.userHasWallet)
 
 
-    
+
 
     return (
         <>
@@ -47,7 +48,7 @@ export default function Sell() {
                                 </div>
                             }
 
-                            {payWith === IPaymentType.CRYPTO && userHasWallet && <ConnectTxn />}
+                            {payWith === IPaymentType.CRYPTO && userHasWallet && <ConnectTxn price={price} fileUrl={fileUrl} />}
                             {payWith === IPaymentType.CRYPTO && !userHasWallet && <AdminTxn price={price} fileUrl={fileUrl} />}
 
 
