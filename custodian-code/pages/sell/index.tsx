@@ -47,8 +47,8 @@ export default function Sell() {
                                 </div>
                             }
 
-                            {/* {payWith === IPaymentType.CRYPTO && userHasWallet && <ConnectTxn />}*/}
-                            {payWith === IPaymentType.CRYPTO && !userHasWallet && <AdminTxn />}
+                            {payWith === IPaymentType.CRYPTO && userHasWallet && <ConnectTxn />}
+                            {payWith === IPaymentType.CRYPTO && !userHasWallet && <AdminTxn price={price} fileUrl={fileUrl} />}
 
 
                             {/* {payWith === IPaymentType.CREDIT_CARD  && <AdminTxn />} */}

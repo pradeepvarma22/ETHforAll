@@ -15,10 +15,12 @@ export async function getAllNfts() {
 
         const tokenURI = await nftContract.tokenURI(tokenId);
         const { data: { image, name, description } } = await axios.get(tokenURI);
+        let _image = String(image)
+        _image = _image.replace("ipfs://", "https://ipfs.io/ipfs/")
 
         const _price = ethers.formatUnits(price.toString(), 'wei');
         const _tokenId = ethers.formatUnits(tokenId.toString(), 'wei');
-        return { tokenId: Number(_tokenId), currentlyListed, isFiat, socialId, hasTxnDone, txnId, price: Number(_price), seller, owner, image, name, description };
+        return { tokenId: Number(_tokenId), currentlyListed, isFiat, socialId, hasTxnDone, txnId, price: Number(_price), seller, owner, image: _image, name, description };
     }));
     return items;
 }
@@ -41,8 +43,10 @@ export async function getNftByTokenId(tokenId: number) {
     const txnId: string = item[8]
     const tokenURI = await nftContract.tokenURI(tokenId);
     const { data: { image, name, description } } = await axios.get(tokenURI);
+    let _image = String(image)
+    _image = _image.replace("ipfs://", "https://ipfs.io/ipfs/")
 
-    const finalItem: INFTItemEx = { tokenId, currentlyListed, isFiat, socialId, hasTxnDone, txnId, price, seller, owner, image, name, description }
+    const finalItem: INFTItemEx = { tokenId, currentlyListed, isFiat, socialId, hasTxnDone, txnId, price, seller, owner, image: _image, name, description }
 
 
     return finalItem;

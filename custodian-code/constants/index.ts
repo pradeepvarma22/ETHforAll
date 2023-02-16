@@ -1,5 +1,5 @@
 // export const CONTRACT_ADDRESS: string = "0x191274304aA83f1A43D3d4D0168C09e95CEbC551" // MUMBAI
-export const CONTRACT_ADDRESS: string = "0x79587a1E31819c26F2F7d14Af533560f7b00d91e" // Mantle
+export const CONTRACT_ADDRESS: string = "0x0f745221403895dbEd3511b7f7a9F99a0BC1A9cf" // Mantle
 
 
 export const CONTRACT_ABI = [
@@ -268,6 +268,35 @@ export const CONTRACT_ABI = [
             }
         ],
         "name": "createNFTByAdmin",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "tokenURI",
+                "type": "string"
+            },
+            {
+                "internalType": "address",
+                "name": "_user",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+            }
+        ],
+        "name": "createNFTByAdminWithWallet",
         "outputs": [
             {
                 "internalType": "uint256",

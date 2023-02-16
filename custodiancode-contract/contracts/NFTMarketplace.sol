@@ -58,7 +58,7 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
     {
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
-        
+
         _safeMint(msg.sender, newTokenId);
         _setTokenURI(newTokenId, tokenURI);
 
@@ -126,13 +126,51 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
         return newTokenId;
     }
 
+    function createNFTByAdminWithWallet(
+        string memory tokenURI,
+        address _user,
+        uint256 price
+    ) public onlyOwner returns (uint256) {
+        _tokenIds.increment();
+        uint256 newTokenId = _tokenIds.current();
+
+
+        _safeMint(_user, newTokenId);
+        _setTokenURI(newTokenId, tokenURI);
+
+        idToNFTItem[newTokenId] = NFTItem(
+            newTokenId,
+            payable(address(this)),
+            payable(_user),
+            price,
+            true,
+            true,
+            "",
+            false,
+            ""
+        );
+
+        _transfer(_user, address(this), newTokenId);
+        emit TokenListedSuccess(
+            newTokenId,
+            address(this),
+            _user,
+            price,
+            true,
+            true,
+            ""
+        );
+
+        return newTokenId;
+    }
+
     function executeSale(uint256 tokenId) public payable {
         uint256 price = idToNFTItem[tokenId].price;
         address seller = idToNFTItem[tokenId].seller;
         require(msg.value >= price, "submit the asking price");
 
         idToNFTItem[tokenId].currentlyListed = false;
-		idToNFTItem[tokenId].hasTxnDone = true;
+        idToNFTItem[tokenId].hasTxnDone = true;
         idToNFTItem[tokenId].seller = payable(msg.sender);
         _itemsSold.increment();
 

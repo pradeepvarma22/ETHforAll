@@ -4,7 +4,7 @@
 
 ```shell
 contract>yarn hardhat run scripts/deploy.ts --network mantle
-NFTMarketplace  0x79587a1E31819c26F2F7d14Af533560f7b00d91e
+NFTMarketplace  0x8BEde64d5177b97aC2855b8F053ee732eD93e3B9
 Done in 109.26s.
 
 contract>yarn hardhat run scripts/deploy.ts --network mumbai
@@ -17,7 +17,7 @@ Done in 117.59s.
 ```
 
 Mantle:
-https://explorer.testnet.mantle.xyz/address/0x79587a1E31819c26F2F7d14Af533560f7b00d91e
+https://explorer.testnet.mantle.xyz/address/0x8BEde64d5177b97aC2855b8F053ee732eD93e3B9
 
 Hyperspace:
 https://hyperspace.filfox.info/en/address/0x248C19BaE8be758B594586f4bC8d94aD9eC6751C

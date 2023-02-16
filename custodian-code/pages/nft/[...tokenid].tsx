@@ -19,6 +19,7 @@ export default function Nft() {
 
   async function getNftById(tokenid: number) {
     let _nft: INFTItemEx = await getNftByTokenId(tokenid)
+    console.log(_nft)
     setNft(_nft)
   }
 
