@@ -5,7 +5,12 @@ import { INFTItemEx, IStore } from '@/types/index'
 import { useSession } from 'next-auth/react';
 import { ethers } from 'ethers';
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from '@/constants';
+import StripePayment from '@/components/Seller/StripePayment';
 declare var window: any
+
+
+
+
 
 export default function Nft() {
   const router = useRouter()
@@ -64,6 +69,8 @@ export default function Nft() {
     }
   }, [router.isReady])
 
+
+  
 
 
 
@@ -137,7 +144,6 @@ export default function Nft() {
               </div>
               {
                 nft?.currentlyListed === true &&
-
                 <div className="flex pt-6">
                   {!isWalletConnected && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={connectToWallet}>Connect to wallet</button>}
 
@@ -145,6 +151,10 @@ export default function Nft() {
 
                   {txnDone && <>Txn Done</>}
                 </div>
+              }
+
+              {
+                nft?.currentlyListed === true && nft?.isFiat === true &&  <StripePayment nft={nft} />
               }
 
 
