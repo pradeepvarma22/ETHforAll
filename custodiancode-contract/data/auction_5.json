@@ -1,0 +1,45 @@
+{
+    "name": "its time to go beyond",
+    "description": "collection was started in June 2021 season 1 - 90 dreamz season 2 - 275 dreamz total 365 daily dreamz",
+    "image": "https://i.seadn.io/gcs/files/029019eda67ee5662e85728d53e7cd10.jpg?auto=format&w=1000",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Cool",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "2:22",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Strength",
+            "value": 1
+        },
+        {
+            "display_type": "boost_percentage",
+            "trait_type": "2:22",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Humble",
+            "value": "True"
+        },
+        {
+            "trait_type": "Kind",
+            "value": "True"
+        }
+    ]
+}

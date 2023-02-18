@@ -4,8 +4,9 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
-contract NFTMarketplace is ERC721URIStorage, Ownable {
+contract NFTMarketplace is ERC721URIStorage, IERC721Receiver, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter public _tokenIds;
     Counters.Counter public _itemsSold;
@@ -133,7 +134,6 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
     ) public onlyOwner returns (uint256) {
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
-
 
         _safeMint(_user, newTokenId);
         _setTokenURI(newTokenId, tokenURI);
@@ -272,5 +272,14 @@ contract NFTMarketplace is ERC721URIStorage, Ownable {
         return
             keccak256(abi.encodePacked(str1)) ==
             keccak256(abi.encodePacked(str2));
+    }
+
+    function onERC721Received(
+        address,
+        address,
+        uint256,
+        bytes memory
+    ) public virtual override returns (bytes4) {
+        return this.onERC721Received.selector;
     }
 }

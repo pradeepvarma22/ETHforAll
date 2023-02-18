@@ -1,0 +1,45 @@
+{
+    "name": "#4149",
+    "description": "The first PJPP collection has been created together with the artist Benny Robinson, who has collaborated with some of the biggest names in music and fashion - including Snoop Dogg, Palace, The Rolling Stones, LVMH and Metallica.",
+    "image": "https://i.seadn.io/gae/YMpMDC0PEHU3ebs89JG4C36JQbJFvIA8mDebG_z_h9pUg_1TB0r11mgE8tdHaO0bRu7jeBFmSh__67ST9aB1tAGJcRNzaD3_3ahI?auto=format&w=1000",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Cool",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "2:22",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Strength",
+            "value": 1
+        },
+        {
+            "display_type": "boost_percentage",
+            "trait_type": "2:22",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Humble",
+            "value": "True"
+        },
+        {
+            "trait_type": "Kind",
+            "value": "True"
+        }
+    ]
+}

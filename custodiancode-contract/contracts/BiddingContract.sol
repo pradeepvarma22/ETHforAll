@@ -2,6 +2,7 @@
 pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol"; // ONLY transferFrom need to used
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 interface INFTMarketPlace is IERC721 {
     function createNFTByUser(string memory tokenURI, uint256 price)
@@ -10,7 +11,7 @@ interface INFTMarketPlace is IERC721 {
         returns (uint256);
 }
 
-contract NFTAuction is Ownable {
+contract NFTAuction is IERC721Receiver, Ownable {
     uint256 private constant DURATION = 7 days;
     INFTMarketPlace public nft; // ONLY MY NFT CONTRACT
 
@@ -35,6 +36,7 @@ contract NFTAuction is Ownable {
     );
 
     mapping(uint256 => IAuction) public auctions;
+    IAuction[] public allAuctions;
 
     constructor(address _nftMarketPlace) {
         counter = 1;
@@ -53,6 +55,8 @@ contract NFTAuction is Ownable {
         auctions[counter].expiresAt = block.timestamp + DURATION;
         auctions[counter].nftId = tokenId;
         auctions[counter].discountRate = disCountRate;
+        counter += 1;
+        allAuctions.push(auctions[counter]);
         emit Auction(
             price,
             block.timestamp,
@@ -81,5 +85,18 @@ contract NFTAuction is Ownable {
         if (refund > 0) {
             payable(msg.sender).transfer(refund);
         }
+    }
+
+    function getAllAuctions() public view returns (IAuction[] memory) {
+        return allAuctions;
+    }
+
+    function onERC721Received(
+        address,
+        address,
+        uint256,
+        bytes memory
+    ) public virtual override returns (bytes4) {
+        return this.onERC721Received.selector;
     }
 }

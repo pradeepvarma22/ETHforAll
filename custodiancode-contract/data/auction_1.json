@@ -1,0 +1,45 @@
+{
+    "name": "#33「IVY Girl (Text Girls)」",
+    "description": "This collection never ends. The name of the collection was named continuez with the meaning of continuing to produce works. I don't want to end the collection, but I want each one to have value. I would be happy if you could join me for a long time. Thank you very much. Yoshioka",
+    "image": "https://i.seadn.io/gcs/files/941876d0c95d51d171f31748201f4052.jpg?auto=format&w=1000",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Cool",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "2:22",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Strength",
+            "value": 1
+        },
+        {
+            "display_type": "boost_percentage",
+            "trait_type": "2:22",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Humble",
+            "value": "True"
+        },
+        {
+            "trait_type": "Kind",
+            "value": "True"
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "name": "BEAST #6383",
+    "description": "Connect your wallet to hub.akidcalledbeast.com, to view your complete BEAST and access all files. a KID called BEAST is a Web3 brand and culture that starts with our digital collectibles — 10,000 unique, truly 3D, and AR-Ready. Each BEAST belongs to 1 of 20 beasthoods. The owner is given access to a sub-community of 500 like-minded individuals.",
+    "image": "https://ipfs.akidcalledbeast.com/ipfs/QmRvAz4CK7k32txTGWydYNjuvC8qqGwamHXKejUEXKQ6Ee/6383.png",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Cool",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "2:22",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "display_type": "boost_number",
+            "trait_type": "Strength",
+            "value": 1
+        },
+        {
+            "display_type": "boost_percentage",
+            "trait_type": "2:22",
+            "value": 1
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Humble",
+            "value": "True"
+        },
+        {
+            "trait_type": "Kind",
+            "value": "True"
+        }
+    ]
+}
