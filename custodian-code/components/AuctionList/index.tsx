@@ -7,7 +7,7 @@ import { getAllAuctionNfts } from '@/utils/nft';
 import { setAuctionNfts } from '@/state/app-slice';
 import { store } from '@/state/store';
 import { useSelector } from 'react-redux';
-import { TbDiscount } from "react-icons/Tb";
+import { TbDiscount } from "react-icons/tb";
 import { BiTimer } from "react-icons/bi"
 
 
