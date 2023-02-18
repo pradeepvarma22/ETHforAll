@@ -16,9 +16,7 @@ export default async function handler(
 
     const user_id = req.body.userId
 
-    console.log(user_id)
     let _res = await User.findById(user_id);
-    console.log(_res)
 
 
     let walletStatus = await Wallet.findOne({ userObjectId: user_id })

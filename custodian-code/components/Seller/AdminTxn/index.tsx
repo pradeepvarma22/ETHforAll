@@ -34,7 +34,6 @@ const AdminTxn: React.FC<IProps> = ({ fileUrl, price }) => {
 
         setClickStatus(IClickStatus.CLICK_TRUE)
         const user_session: any = await getSession()
-        console.log(user_session.userid)
 
         const req = await fetch('/api/wallet/create', {
             method: 'POST',

@@ -41,8 +41,9 @@ export interface INFTItemEx extends INFTItem {
     image: string;
     name: string;
     description: string;
-
 }
+
+
 
 export enum IPaymentType {
     'CRYPTO' = 'CRYPTO',
@@ -55,6 +56,7 @@ export interface IStore {
     hasConnectedWallet: boolean;
     walletAddress: string;
     userHasWallet: boolean;
+    auctionNfts: IAuctionEx[];
 }
 
 export enum IClickStatus {
@@ -63,3 +65,26 @@ export enum IClickStatus {
     'WORK_DONE' = 'WORK_DONE'
 }
 
+
+export interface IAuction {
+    startingPrice: number,
+    startAt: number;
+    expiresAt: number;
+    nftId: number;
+    discountRate: number;
+}
+
+export interface IAuction  {
+    startingPrice: number,
+    startAt: number;
+    expiresAt: number;
+    nftId: number;
+    discountRate: number;
+}
+
+export interface IAuctionEx extends IAuction{
+    image: string;
+    name: string;
+    description: string;
+
+}

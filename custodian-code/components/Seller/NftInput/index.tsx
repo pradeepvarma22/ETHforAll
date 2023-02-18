@@ -44,7 +44,6 @@ const NftInput: React.FC<IProps> = ({ setNftName, setNftDescription, setPrice, n
             });
             let URI = metadata.url.replace("ipfs://", "https://ipfs.io/ipfs/")
             setFileUrl(URI);
-            console.log(URI)
             setLoading(false);
         } catch (error) {
             console.error(error)

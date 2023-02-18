@@ -7,7 +7,8 @@ const initialState: IStore = {
     payWith: IPaymentType.CRYPTO,
     hasConnectedWallet: false,
     userHasWallet: false,
-    walletAddress: ""
+    walletAddress: "",
+    auctionNfts: []
 }
 
 const Slice = createSlice({
@@ -43,10 +44,18 @@ const Slice = createSlice({
             else {
                 state.payWith = IPaymentType.CREDIT_CARD
             }
-        }
+        },
+        setAuctionNfts: (state, action) => {
+            if (action.payload) {
+                state.auctionNfts = action.payload
+            }
+            else {
+                state.auctionNfts = []
+            }
+        },
 
     }
 })
 
-export const { setAllNfts, setPayWith, setUserHasWallet, setWallet } = Slice.actions
+export const { setAllNfts, setPayWith, setUserHasWallet, setWallet, setAuctionNfts } = Slice.actions
 export default Slice.reducer;
