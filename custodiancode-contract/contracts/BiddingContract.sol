@@ -47,12 +47,13 @@ contract NFTAuction is IERC721Receiver, Ownable {
     function sellNFT(
         string memory tokenURI,
         uint256 price,
-        uint256 disCountRate
+        uint256 disCountRate,
+        uint256 _days
     ) public onlyOwner {
         uint256 tokenId = nft.createNFTByUser(tokenURI, price);
         auctions[counter].startingPrice = price;
         auctions[counter].startAt = block.timestamp;
-        auctions[counter].expiresAt = block.timestamp + DURATION;
+        auctions[counter].expiresAt = block.timestamp + (_days * 1 days);
         auctions[counter].nftId = tokenId;
         auctions[counter].discountRate = disCountRate;
         counter += 1;

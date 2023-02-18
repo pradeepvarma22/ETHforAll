@@ -1,6 +1,10 @@
 import { ethers } from "hardhat";
 import NFTURIs from "../data";
 
+function getRandomArbitrary(min:number, max:number):number {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
 
 async function main() {
   let NFTMarketplace = await ethers.getContractFactory("NFTMarketplace");
@@ -31,18 +35,14 @@ async function main() {
   nftAuction = await nftAuction.deployed();
 
 
-
   for (let i = 0; i < AuctionURIs.length; i++) {
-    await (await nftAuction.sellNFT(AuctionURIs[i], i + 1, i)).wait()
+    await (await nftAuction.sellNFT(AuctionURIs[i], getRandomArbitrary(1,5), getRandomArbitrary(10,20), getRandomArbitrary(1,10) )).wait()
   }
 
   console.log(`NFTMarketplace  ${NftMarketplace.address}`);
   console.log(`NFTAuction  ${nftAuction.address}`);
 
-
-
-
-
+  
 
 
 
@@ -61,4 +61,7 @@ const AuctionURIs: string[] = [
   "https://ipfs.io/ipfs/bafybeicrbg2xplzrfl6y4ntuurjrfhtrhvoi3hayvoul6cmbx5cenj6etq/auction_4.json",
   "https://ipfs.io/ipfs/bafybeiexss7xu4wgpbnfyiant57xn6izfib6klcaygx2xejqxry65fb7iy/auction_5.json",
   "https://ipfs.io/ipfs/bafybeifoyuxol6qkdzat6hf6jjedbjvutfxlhjbcg3qr52pjr72ayxywbe/auction_6.json",
+  "https://ipfs.io/ipfs/bafybeic7fuc7udu6drjfdmsdvu7ccoi45i2ljqpoship76y3hyt4sna3ki/7.json",
+  "https://ipfs.io/ipfs/bafybeigfi23m2joaxxsnaayfp4e75z4nv3652n22lvtfxeffjjkv5g2leu/8.json",
+  "https://ipfs.io/ipfs/bafybeid2i4suy4yjndcobfwx7vbi4nwzmi7uryrv3y72fk4nyrrgzbneze/9.json"
 ]
