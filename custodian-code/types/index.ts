@@ -43,6 +43,10 @@ export interface INFTItemEx extends INFTItem {
     description: string;
 }
 
+export interface IAuction2 extends INFTItemEx, IAuctionEx {
+
+
+}
 
 
 export enum IPaymentType {
@@ -74,7 +78,7 @@ export interface IAuction {
     discountRate: number;
 }
 
-export interface IAuction  {
+export interface IAuction {
     startingPrice: number,
     startAt: number;
     expiresAt: number;
@@ -82,7 +86,7 @@ export interface IAuction  {
     discountRate: number;
 }
 
-export interface IAuctionEx extends IAuction{
+export interface IAuctionEx extends IAuction {
     image: string;
     name: string;
     description: string;

@@ -70,9 +70,9 @@ const AuctionList: React.FC = () => {
 
 
 
-    async function handleClick(nftId: number) {
+    async function handleClick(nftId: number, auctionId: number) {
         console.log('click')
-        router.push(`/nft-auction/${nftId}`)
+        router.push(`/nft-auction/${nftId}/${auctionId}`)
         
     }
 
@@ -90,7 +90,7 @@ const AuctionList: React.FC = () => {
                 >
                     {data.map((nft: IAuctionEx, index) => (
 
-                        <Box key={index} width="450px" itemID={String(nft.nftId)} overflow="hidden" p="5" onClick={()=>handleClick(nft.nftId)}>
+                        <Box key={index} width="450px" itemID={String(nft.nftId)} overflow="hidden" p="5" onClick={()=>handleClick(nft.nftId, nft.auctionId)}>
                             <div className='duration-500 hover:scale-105  hover:shadow-xl'>
                                 <img className="rounded-xl object-fill h-80 w-96" src={nft.image} />
                                 <div>

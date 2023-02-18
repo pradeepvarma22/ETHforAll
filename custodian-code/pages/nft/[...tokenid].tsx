@@ -49,7 +49,7 @@ export default function Nft() {
     await getNftById(tokenid)
   }
 
-  async function handleSell() {
+  async function handleBuy() {
 
     const signer = await provider.getSigner()
     const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
@@ -146,7 +146,7 @@ export default function Nft() {
                 <div className="flex pt-6">
                   {!isWalletConnected && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={connectToWallet}>Connect to wallet</button>}
 
-                  {isWalletConnected && txnDone === false && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handleSell}>Sell</button>}
+                  {isWalletConnected && txnDone === false && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handleBuy}>Buy</button>}
 
                   {txnDone && <>Txn Done</>}
                 </div>

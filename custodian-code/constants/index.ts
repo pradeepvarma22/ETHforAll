@@ -317,6 +317,11 @@ export const AUCTION_CONTRACT_ABI = [
                 "internalType": "uint256",
                 "name": "disCountRate",
                 "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_days",
+                "type": "uint256"
             }
         ],
         "name": "sellNFT",
@@ -351,6 +356,14 @@ export const AUCTION_CONTRACT_ABI = [
         "type": "function"
     }
 ]
+
+
+
+
+
+
+
+
 
 export const CONTRACT_ABI = [
     {
@@ -1255,3 +1268,4 @@ export const CONTRACT_ABI = [
         "type": "function"
     }
 ]
+

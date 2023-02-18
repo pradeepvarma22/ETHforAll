@@ -1,21 +1,33 @@
-import { getNftByTokenId } from '@/utils/nft';
+import { getNftDataByNftIdAndAuctionId } from '@/utils/nft';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-import { INFTItemEx, IStore } from '@/types/index'
+import { IAuction2, INFTItemEx, IStore } from '@/types/index'
 import { useSession } from 'next-auth/react';
 import { ethers } from 'ethers';
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from '@/constants';
+import { AUCTION_CONTRACT_ABI, AUCTION_CONTRACT_ADDRESS, CONTRACT_ABI, CONTRACT_ADDRESS } from '@/constants';
 import StripePayment from '@/components/Seller/StripePayment';
 declare var window: any
 
 
 
+function timeConverter(UNIX_timestamp: number) {
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+  return time;
+}
 
 
 export default function NftAuction() {
   const router = useRouter()
   const { data, status } = useSession()
-  const [nft, setNft] = useState<INFTItemEx>()
+  const [nft, setNft] = useState<IAuction2>()
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false)
   const [provider, setProvider] = useState<any>()
   const [txnDone, setTxnDone] = useState<boolean>(false)
@@ -40,19 +52,22 @@ export default function NftAuction() {
 
 
 
-  async function getNftById(tokenid: number) {
-    let _nft: INFTItemEx = await getNftByTokenId(tokenid)
+  async function _getNftDataByNftIdAndAuctionId(tokenid: number, auctionId: number) {
+    let _nft: IAuction2 = await getNftDataByNftIdAndAuctionId(tokenid, auctionId)
     setNft(_nft)
+    console.log(_nft)
+
   }
 
-  async function onPageLoad(tokenid: number) {
-    await getNftById(tokenid)
+  async function onPageLoad(nftId: number, auctionId: number) {
+    await _getNftDataByNftIdAndAuctionId(nftId, auctionId)
   }
 
   async function handleSell() {
     const signer = await provider.getSigner()
-    const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
-    await (await contract.executeSale(nft?.tokenId, { value: ethers.parseUnits(String(nft?.price), "ether") })).wait()
+    console.log(signer)
+    const contract = new ethers.Contract(AUCTION_CONTRACT_ADDRESS, AUCTION_CONTRACT_ABI, signer)
+    await (await contract.buy(nft?.auctionId, { value: ethers.parseUnits(String(nft?.price + 2), "ether") })).wait()
 
     setTxnDone(true)
 
@@ -61,14 +76,15 @@ export default function NftAuction() {
 
   useEffect(() => {
     if (router.isReady && router.query.tokenid) {
-      onPageLoad(Number(router.query.tokenid))
+      console.log(router.query)
+      onPageLoad(Number(router.query.tokenid[0]), Number(router.query.tokenid[1]))
     }
     else {
     }
   }, [router.isReady])
 
 
-  
+
 
 
 
@@ -84,9 +100,7 @@ export default function NftAuction() {
                   nft?.currentlyListed === false && <div className="text-red-500 font-bold">
                     Sold
                   </div>
-
                 }
-
               </div>
               <div className="flex mb-4">
                 <span className="flex items-center">
@@ -126,6 +140,8 @@ export default function NftAuction() {
                 </span>
               </div>
               <p className="leading-relaxed pb-5 text-justify">{nft?.description}</p>
+              <p className="leading-relaxed pb-5 text-justify text-red-400">{nft?.discountRate} % OFF</p>
+              <p className="leading-relaxed pb-5 text-justify">Offer ends At {timeConverter(nft?.expiresAt)}</p>
               <div className="flex">
 
 
@@ -143,17 +159,14 @@ export default function NftAuction() {
               {
                 nft?.currentlyListed === true &&
                 <div className="flex pt-6">
-                  {!isWalletConnected && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={connectToWallet}>Connect to wallet</button>}
+                  {!isWalletConnected && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={connectToWallet}>Connect to wallet</button>}
 
-                  {isWalletConnected && txnDone === false && nft?.isFiat === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handleSell}>Sell</button>}
+                  {isWalletConnected && txnDone === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handleSell}>Sell</button>}
 
                   {txnDone && <>Txn Done</>}
                 </div>
               }
 
-              {
-                nft?.currentlyListed === true && nft?.isFiat === true &&  <StripePayment nft={nft} />
-              }
 
 
 

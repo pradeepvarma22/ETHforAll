@@ -11,13 +11,13 @@ const TypewriterComponent: React.FC = () => {
                 }}
                 onInit={(typewriter) => {
                     typewriter
-                        .typeString(`<span className="">Buy and Sell using Crypto and Fiat</span>`)
-                        .pauseFor(2000)
+                        .typeString(`<span className="">NFTs.</span>`)
+                        .pauseFor(8)
+                        .deleteAll()
+                        .typeString('<span className="">Buy and Sell using Crypto and Fiat</span>')
+                        .pauseFor(8)
                         .deleteAll()
                         .typeString('<span className="">Collectible Items.</span>')
-                        .pauseFor(200)
-                        .deleteAll()
-                        .typeString('<span className="">NFTs.</span>')
                         .start();
                 }}
             />
@@ -27,4 +27,3 @@ const TypewriterComponent: React.FC = () => {
 }
 
 export default TypewriterComponent
-
