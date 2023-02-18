@@ -1,7 +1,7 @@
 import { useEffect } from "react"
-import { getAllAuctionNfts, getAllNfts } from "../../utils/nft"
-import { IAuctionEx, INFTItemEx, IStore } from "@/types";
-import { setAllNfts, setAuctionNfts } from "@/state/app-slice";
+import { getAllNfts } from "../../utils/nft"
+import { INFTItemEx, IStore } from "@/types";
+import { setAllNfts } from "@/state/app-slice";
 import { useSelector } from "react-redux";
 import { store } from "@/state/store";
 import ListedNFt from "./ListedNft";
@@ -36,17 +36,6 @@ const ListedNFts: React.FC = () => {
                 )}
             </div>
 
-            <h2 className="px-10 text-3xl text-red-500 font-bold">Sold</h2>
-            <div className="w-full flex flex-wrap justify-start md:justify-center">
-                {allNfts.map((nft: INFTItemEx, index) => (
-                    <div key={index}>
-                        {
-                            nft.currentlyListed === false && <ListedNFt key={index} nft={nft} />
-                        }
-                    </div>
-                )
-                )}
-            </div>
         </>
     )
 }

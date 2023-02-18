@@ -80,7 +80,7 @@ export async function getAllAuctionNfts() {
         const { data: { image, name, description } } = await axios.get(tokenURI);
         let _image = String(image)
         _image = _image.replace("ipfs://", "https://ipfs.io/ipfs/")
-        let auction: IAuctionEx = { startingPrice, startAt, expiresAt, nftId, discountRate, image: _image, description, name }
+        let auction: IAuctionEx = { startingPrice, startAt, expiresAt, nftId, discountRate, image: _image, description, name, auctionId: i }
 
 
         allAuctions.push(auction)

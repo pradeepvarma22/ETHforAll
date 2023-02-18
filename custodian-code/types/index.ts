@@ -86,5 +86,5 @@ export interface IAuctionEx extends IAuction{
     image: string;
     name: string;
     description: string;
-
+    auctionId: number;
 }
