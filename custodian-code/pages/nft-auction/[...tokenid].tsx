@@ -163,7 +163,7 @@ export default function NftAuction() {
                 <div className="flex pt-6">
                   {!isWalletConnected && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={connectToWallet}>Connect to wallet</button>}
 
-                  {isWalletConnected && txnDone === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handleSell}>Sell</button>}
+                  {isWalletConnected && txnDone === false && <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={handleSell}>Buy</button>}
 
                   {txnDone && <>Txn Done</>}
                 </div>
