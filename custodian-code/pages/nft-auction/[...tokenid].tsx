@@ -5,7 +5,9 @@ import { IAuction2, INFTItemEx, IStore } from '@/types/index'
 import { useSession } from 'next-auth/react';
 import { ethers } from 'ethers';
 import { AUCTION_CONTRACT_ABI, AUCTION_CONTRACT_ADDRESS, CONTRACT_ABI, CONTRACT_ADDRESS } from '@/constants';
-import StripePayment from '@/components/Seller/StripePayment';
+import { useSelector } from 'react-redux';
+import { store } from '@/state/store';
+import { setAuctionNftItem } from '@/state/app-slice';
 declare var window: any
 
 
@@ -27,7 +29,8 @@ function timeConverter(UNIX_timestamp: number) {
 export default function NftAuction() {
   const router = useRouter()
   const { data, status } = useSession()
-  const [nft, setNft] = useState<IAuction2>()
+  const nft = useSelector((state: IStore)=>state.auctionNftItem)
+
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false)
   const [provider, setProvider] = useState<any>()
   const [txnDone, setTxnDone] = useState<boolean>(false)
@@ -54,9 +57,8 @@ export default function NftAuction() {
 
   async function _getNftDataByNftIdAndAuctionId(tokenid: number, auctionId: number) {
     let _nft: IAuction2 = await getNftDataByNftIdAndAuctionId(tokenid, auctionId)
-    setNft(_nft)
-    console.log(_nft)
 
+    store.dispatch(setAuctionNftItem(_nft))
   }
 
   async function onPageLoad(nftId: number, auctionId: number) {
