@@ -16,12 +16,13 @@ const LeftArrow = () => {
 
     return (
         <Flex justifyContent="center" alignItems="center" marginRight="1">
-            <Icon
+            {/* <Icon
                 as={FaArrowAltCircleLeft}
                 onClick={() => scrollPrev()}
                 fontSize="6xl"
                 cursor="pointer"
-            />
+            /> */}
+            <img src='/point-left.png' className='w-52' onClick={() => scrollPrev()} />
         </Flex>
     );
 };
@@ -31,12 +32,14 @@ const RightArrow = () => {
 
     return (
         <Flex justifyContent="center" alignItems="center" marginRight="1">
-            <Icon
+            {/* <Icon
                 as={FaArrowAltCircleRight}
                 onClick={() => scrollNext()}
                 fontSize="2xl"
                 cursor="pointer"
-            />
+            /> */}
+            <img src='/point-right.png' className='w-52' onClick={() => scrollNext()} />
+
         </Flex>
     );
 };
