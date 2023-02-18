@@ -22,7 +22,7 @@ const LeftArrow = () => {
                 fontSize="6xl"
                 cursor="pointer"
             /> */}
-            <img src='/point-left.png' className='w-52' onClick={() => scrollPrev()} />
+            <img src='/point-left.png' className='w-32 hover:scale-75 transition-all duration-500 cursor-pointer' onClick={() => scrollPrev()} />
         </Flex>
     );
 };
@@ -38,7 +38,7 @@ const RightArrow = () => {
                 fontSize="2xl"
                 cursor="pointer"
             /> */}
-            <img src='/point-right.png' className='w-52' onClick={() => scrollNext()} />
+            <img src='/point-right.png' className='w-32 hover:scale-75 transition-all duration-500 cursor-pointer' onClick={() => scrollNext()} />
 
         </Flex>
     );
@@ -97,18 +97,20 @@ const AuctionList: React.FC = () => {
 
                     {data.map((nft: IAuctionEx, index) => (
 
-                        <Box key={index} width="400px" itemID={String(nft.nftId)} overflow="hidden" p="5" onClick={handleClick}>
-                            <img className="object-fill h-80 w-96" src={nft.image} />
-                            <div>
-                                <div>{nft.name}</div>
-                                <div>{nft.startingPrice} BIT</div>
-                                <div className="flex items-center">
-                                    <span> {nft.discountRate} </span>
-                                    <TbDiscount size={30} className="mr-2 px-1" style={{ color: 'red' }} />
-                                </div>
-                                <div className="flex items-center">
-                                    <BiTimer style={{ color: 'white' }} size={20} className="mr-2" />
-                                    <div className='px-1'>{timeConverter(nft.expiresAt)} </div>
+                        <Box key={index} width="450px" itemID={String(nft.nftId)} overflow="hidden" p="5" onClick={handleClick}>
+                            <div className='duration-500 hover:scale-105  hover:shadow-xl'>
+                                <img className="rounded-xl object-fill h-80 w-96" src={nft.image} />
+                                <div>
+                                    <div>{nft.name}</div>
+                                    <div>{nft.startingPrice} BIT</div>
+                                    <div className="flex items-center">
+                                        <span> {nft.discountRate} </span>
+                                        %  <div className='text-red-500 px-1'> OFF</div>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <BiTimer style={{ color: 'white' }} size={20} className="mr-2" />
+                                        <div className='px-1'>{timeConverter(nft.expiresAt)} </div>
+                                    </div>
                                 </div>
                             </div>
                         </Box>
