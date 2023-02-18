@@ -1,8 +1,29 @@
+import { setAuctionNfts } from "@/state/app-slice";
+import { store } from "@/state/store";
+import { IAuctionEx } from "@/types";
+import { getAllAuctionNfts } from "@/utils/nft";
+import { useEffect } from "react";
 import styles from "./Hero.module.scss";
 import TypewriterComponent from "./TypeWriter";
 
 
 export default function HeroSection() {
+
+
+    async function getAuctionNfts() {
+        const _data: IAuctionEx[] = await getAllAuctionNfts()
+        store.dispatch(setAuctionNfts(_data))
+    }
+
+    async function onPageLoad() {
+        await getAuctionNfts() 
+    }
+
+    useEffect(()=>{
+        onPageLoad()
+    },[])
+
+
     return (
         <>
             <div className={styles.main}>

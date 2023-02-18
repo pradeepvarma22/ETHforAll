@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { Box, Icon, Flex } from '@chakra-ui/react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 import { IAuctionEx, IStore } from '@/types';
 import { getAllAuctionNfts } from '@/utils/nft';
 import { setAuctionNfts } from '@/state/app-slice';
@@ -9,6 +8,7 @@ import { store } from '@/state/store';
 import { useSelector } from 'react-redux';
 import { TbDiscount } from "react-icons/tb";
 import { BiTimer } from "react-icons/bi"
+import { useRouter } from "next/router"
 
 
 const LeftArrow = () => {
@@ -62,29 +62,23 @@ const AuctionList: React.FC = () => {
 
 
     const data = useSelector((state: IStore) => state.auctionNfts)
+    const router = useRouter()
 
 
 
-    async function getAuctionNfts() {
-        const _data: IAuctionEx[] = await getAllAuctionNfts()
-        store.dispatch(setAuctionNfts(_data))
-    }
 
 
-    async function onPageLoad() {
-        await getAuctionNfts()
-    }
 
 
-    async function handleClick() {
+    async function handleClick(nftId: number) {
         console.log('click')
+        router.push(`/nft-auction/${nftId}`)
+        
     }
 
 
 
-    useEffect(() => {
-        onPageLoad()
-    }, [])
+    
 
     return (
 
@@ -94,10 +88,9 @@ const AuctionList: React.FC = () => {
                     LeftArrow={LeftArrow}
                     RightArrow={RightArrow}
                 >
-
                     {data.map((nft: IAuctionEx, index) => (
 
-                        <Box key={index} width="450px" itemID={String(nft.nftId)} overflow="hidden" p="5" onClick={handleClick}>
+                        <Box key={index} width="450px" itemID={String(nft.nftId)} overflow="hidden" p="5" onClick={()=>handleClick(nft.nftId)}>
                             <div className='duration-500 hover:scale-105  hover:shadow-xl'>
                                 <img className="rounded-xl object-fill h-80 w-96" src={nft.image} />
                                 <div>
