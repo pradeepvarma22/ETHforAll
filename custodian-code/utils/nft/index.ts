@@ -22,6 +22,7 @@ export async function getAllNfts() {
         const _tokenId = ethers.formatUnits(tokenId.toString(), 'wei');
         return { tokenId: Number(_tokenId), currentlyListed, isFiat, socialId, hasTxnDone, txnId, price: Number(_price), seller, owner, image: _image, name, description };
     }));
+    console.log(items)
     return items;
 }
 

@@ -22,7 +22,7 @@ const config: HardhatUserConfig = {
     },
     mumbai: {
       chainId: 80001,
-      url: "https://matic-mumbai.chainstacklabs.com",
+      url: `https://withered-bold-crater.matic-testnet.discover.quiknode.pro/${process.env.QUICK_NODE_MUMBAI!}/`,
       accounts: [PRIVATE_KEY],
     },
   },

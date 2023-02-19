@@ -48,11 +48,16 @@ const ConnectTxn: React.FC<IProps> = ({ fileUrl, price }) => {
 
 
     const handleSell = async () => {
-        const signer = await provider.getSigner()
-        const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
-        let txn = await (await contract.createNFTByUser(fileUrl, price)).wait()
-        console.log(txn)
-        setTxn(true)
+		try{
+		     const signer = await provider.getSigner()
+			const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
+			let txn = await (await contract.createNFTByUser(fileUrl, price)).wait()
+			console.log(txn)
+			setTxn(true)
+
+		}catch(e){
+		
+		}
     };
 
 
