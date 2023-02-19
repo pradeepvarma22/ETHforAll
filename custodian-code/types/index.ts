@@ -62,6 +62,7 @@ export interface IStore {
     userHasWallet: boolean;
     auctionNfts: IAuctionEx[];
     auctionNftItem: IAuction2;
+    userNfts:INFTItemEx[];
 }
 
 export enum IClickStatus {

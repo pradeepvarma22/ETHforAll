@@ -26,6 +26,17 @@ export async function getAllNfts() {
 }
 
 
+export async function getAllUserNfts(address: string) {
+
+    let allNfts: INFTItemEx[] = await getAllNfts()
+
+    const filteredNfts = allNfts.filter((item) => item.seller === address);
+
+
+    return filteredNfts;
+}
+
+
 export async function getNftByTokenId(tokenId: number) {
 
     const URI: string = process.env.NEXT_PUBLIC_MANTLE_URI_QUICKNODE!
@@ -85,8 +96,6 @@ export async function getAllAuctionNfts() {
 
         allAuctions.push(auction)
     }
-
-
 
     return allAuctions;
 }

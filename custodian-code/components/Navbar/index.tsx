@@ -28,7 +28,9 @@ const Navbar: React.FC = () => {
                         </Link>
                         {status === "authenticated" &&
                             <li>
-                                Profile
+                                <Link href="/profile">
+                                    Profile
+                                </Link>
                             </li>
                         }
                         <li>

@@ -41,9 +41,9 @@ export default function HeroSection() {
                     </div>
                     <div>
                         <div className={styles.sub1_trends}>
-                            <div className="">240k+</div>
-                            <div className="">100k+</div>
-                            <div className="">240k+</div>
+                            <div className="">10k+</div>
+                            <div className="">2k+</div>
+                            <div className="">5k+</div>
                         </div>
                         <div className={styles.sub1_trends2}>
                             <div className="">Total Sale</div>

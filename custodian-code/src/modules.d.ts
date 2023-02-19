@@ -1,0 +1,1 @@
+declare module 'react-blockies-image';      // no types found
